@@ -127,7 +127,8 @@ export class Source extends BaseSource<Params> {
           return;
         }
 
-        const cmd = ["pt", ...args.sourceParams.args, "."];
+        const ignoreArgs = args.sourceParams.ignore.map(x => ["--ignore", x]).flat();
+        const cmd = ["pt", ...args.sourceParams.args, ...ignoreArgs, input, "."];
         const cwd = args.sourceParams.path != ""
           ? args.sourceParams.path
           : await fn.getcwd(args.denops) as string;
@@ -196,6 +197,7 @@ export class Source extends BaseSource<Params> {
   params(): Params {
     return {
       args: ["--nogroup", "--nocolor", "--smart-case", "--column", "--hidden"],
+      ignore: [".git", ".gitignore"],
 
       input: "",
       path: "",

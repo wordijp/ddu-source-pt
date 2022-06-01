@@ -81,6 +81,13 @@ args	(string[])
 
 	Default: ["--nogroup", "--nocolor", "--smart-case", "--hidden"]
 
+						*ddu-source-pt-param-ignore*
+ignore	(string[])
+  ignore directries and files.
+  It is same `["--ignore", "target"]` in args.
+
+	Default: [".git", ".gitignore"]
+
 						*ddu-source-pt-param-input*
 input	(string)
 	Search input string.

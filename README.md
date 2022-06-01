@@ -21,6 +21,7 @@ call ddu#custom#patch_global({
     \   'sourceParams' : {
     \     'pt' : {
     \       'args': ['--nogroup', '--nocolor', '--smart-case', '--column', '--hidden'],
+    \       'ignore': ['.git', '.gitignore'],
     \     },
     \   },
     \ })
