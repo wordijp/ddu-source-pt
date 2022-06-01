@@ -1,6 +1,6 @@
 # ddu-source-pt
 
-the_platinum_searcher(pt) ripgrep source for ddu.vim.
+the_platinum_searcher(pt) source for ddu.vim.
 
 ### denops.vim
 
