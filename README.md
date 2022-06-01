@@ -1,8 +1,6 @@
 # ddu-source-rg
 
-ripgrep source for ddu.vim.
-
-## Required
+the_platinum_searcher(pt) ripgrep source for ddu.vim.
 
 ### denops.vim
 
@@ -12,36 +10,22 @@ https://github.com/vim-denops/denops.vim
 
 https://github.com/Shougo/ddu.vim
 
-### ripgrep
+### the_platinum_searcher(pt)
 
-https://github.com/BurntSushi/ripgrep
+https://github.com/monochromegane/the_platinum_searcher
 
 ## Configuration
 
 ```
 call ddu#custom#patch_global({
     \   'sourceParams' : {
-    \     'rg' : {
-    \       'args': ['--column', '--no-heading', '--color', 'never'],
+    \     'pt' : {
+    \       'args': ['--nogroup', '--nocolor', '--smart-case', '--column', '--hidden'],
     \     },
     \   },
     \ })
 ```
 
-if you want to highlight the search word, should be set "--json".
+## Original
 
-```
-e.g.
-
-call ddu#custom#patch_global({
-    \   'sourceParams' : {
-    \     'rg' : {
-    \       'args': ['--json'],
-    \     },
-    \   },
-    \ })
-```
-
-## Author
-
-KUDO Shunsuke (skudo_xx)
+Customized by [shun/ddu-source-rg](https://github.com/shun/ddu-source-rg).

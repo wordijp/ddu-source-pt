@@ -1,24 +1,25 @@
-*ddu-source-rg.txt*	ripgrep source for ddu.vim
+*ddu-source-pt.txt*	the_platinum_searcher source for ddu.vim
 
-Author: KUDO Shunsuke <kudo.shunsuke.xx@gmail.com>
+Author: wordijp <wordijp@gmail.com>
+Original: KUDO Shunsuke <kudo.shunsuke.xx@gmail.com>
 License: MIT license
 
-CONTENTS					*ddu-source-rg-contents*
+CONTENTS					*ddu-source-pt-contents*
 
-Introduction    |ddu-source-rg-introduction|
-Install         |ddu-source-rg-install|
-Commands        |ddu-source-rg-commands|
-Examples        |ddu-source-rg-examples|
-Params          |ddu-source-rg-params|
+Introduction    |ddu-source-pt-introduction|
+Install         |ddu-source-pt-install|
+Commands        |ddu-source-pt-commands|
+Examples        |ddu-source-pt-examples|
+Params          |ddu-source-pt-params|
 
-
-==============================================================================
-INTRODUCTION					*ddu-source-rg-introduction*
-
-This source collects ripgrep result.
 
 ==============================================================================
-INSTALL						*ddu-source-rg-install*
+INTRODUCTION					*ddu-source-pt-introduction*
+
+This source collects the_platinum_searcher result.
+
+==============================================================================
+INSTALL						*ddu-source-pt-install*
 
 Please install below plugins.
 
@@ -26,31 +27,31 @@ https://github.com/Shougo/ddu.vim
 https://github.com/vim-denops/denops.vim
 
 And install below binary.
-https://github.com/BurntSushi/ripgrep
+https://github.com/monochromegane/the_platinum_searcher
 
 ==============================================================================
-COMMANDS					*ddu-source-rg-commands*
+COMMANDS					*ddu-source-pt-commands*
 
-						*:DduRg*
-:DduRg
-	Search text by ripgrep.
+						*:DduPt*
+:DduPt
+	Search text by the_platinum_searcher.
 
 ==============================================================================
-EXAMPLES					*ddu-source-rg-examples*
+EXAMPLES					*ddu-source-pt-examples*
 
 >
     " 'word' specify what you want search word.
-    call ddu#start({'sources': [{'name': 'rg', 'params': {'input': word}}]})
+    call ddu#start({'sources': [{'name': 'pt', 'params': {'input': word}}]})
 
     " live grep
     " You need to make "volatile" option v:true.
     " Note: the matchers should be empty for performance
-    command! DduRgLive call <SID>ddu_rg_live()
-    function! s:ddu_rg_live() abort
+    command! DduPtLive call <SID>ddu_pt_live()
+    function! s:ddu_pt_live() abort
       call ddu#start({
             \   'volatile': v:true,
             \   'sources': [{
-            \     'name': 'rg',
+            \     'name': 'pt',
             \     'options': {'matchers': []},
             \   }],
             \   'uiParams': {'ff': {
@@ -65,30 +66,28 @@ EXAMPLES					*ddu-source-rg-examples*
     " https://github.com/Shougo/ddu-filter-converter_display_word
     "call ddu#custom#patch_global({
     "    \   'sourceOptions': {
-    "    \     'rg': {
+    "    \     'pt': {
     "    \       'matchers': ['converter_display_word', 'matcher_substring'],
     "    \     },
     "    \   }
     "    \ })
 <
 ==============================================================================
-PARAMS						*ddu-source-rg-params*
+PARAMS						*ddu-source-pt-params*
 
-						*ddu-source-rg-param-args*
+						*ddu-source-pt-param-args*
 args	(string[])
 	Execute rg with args.
 
-	Default: ["--column", "--no-heading", "--color", "never"]
+	Default: ["--nogroup", "--nocolor", "--smart-case", "--hidden"]
 
-	if you want to highlight the search word, should be set "--json".
-	e.g. ["--json"]
-						*ddu-source-rg-param-input*
+						*ddu-source-pt-param-input*
 input	(string)
 	Search input string.
 	Note: If |ddu-option-volatile| is true, |ddu-option-input| is used
 	instead.
 
-						*ddu-source-rg-param-path*
+						*ddu-source-pt-param-path*
 path	(string)
 	Search directory.
 	If it is empty, |getcwd()| is used instead.

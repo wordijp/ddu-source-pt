@@ -127,7 +127,7 @@ export class Source extends BaseSource<Params> {
           return;
         }
 
-        const cmd = ["rg", ...args.sourceParams.args, input];
+        const cmd = ["pt", ...args.sourceParams.args, "."];
         const cwd = args.sourceParams.path != ""
           ? args.sourceParams.path
           : await fn.getcwd(args.denops) as string;
@@ -152,14 +152,7 @@ export class Source extends BaseSource<Params> {
               abortController.signal,
             )
           ) {
-            if (args.sourceParams.args.includes("--json")) {
-              const ret = parse_json(line, cwd);
-              if (ret) {
-                items.push(ret);
-              }
-            } else {
-              items.push(parse_line(line, cwd));
-            }
+            items.push(parse_line(line, cwd));
             if (items.length >= enqueueSize) {
               numChunks++;
               if (numChunks > 1) {
@@ -202,7 +195,8 @@ export class Source extends BaseSource<Params> {
 
   params(): Params {
     return {
-      args: ["--column", "--no-heading", "--color", "never"],
+      args: ["--nogroup", "--nocolor", "--smart-case", "--column", "--hidden"],
+
       input: "",
       path: "",
       highlights: {
