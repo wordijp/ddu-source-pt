@@ -1,4 +1,4 @@
-# ddu-source-rg
+# ddu-source-pt
 
 the_platinum_searcher(pt) ripgrep source for ddu.vim.
 
